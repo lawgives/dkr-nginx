@@ -10,6 +10,9 @@ ENV GPG_KEYS B0F4253373F8F6F510D42178520A9993A1C052F8
 # Add dinit https://github.com/miekg/dinit (Compiled via Makefile)
 ADD deps/bin/dinit /sbin/dinit
 
+# Add go-dnsmasw https://github.com/janeczku/go-dnsmasq (Compiled via Makefile)
+ADD deps/bin/go-dnsmasq /sbin/go-dnsmasq
+
 ENV NGINX_CONFIG "\
 	--prefix=/etc/nginx \
 	--sbin-path=/usr/sbin/nginx \
@@ -57,6 +60,8 @@ ENV NGINX_CONFIG "\
 RUN \
 	addgroup -S nginx \
 	&& adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx \
+  && apk update && apk upgrade \
+  && apk add --no-cache openssl ca-certificates \
 	&& apk add --no-cache --virtual .build-deps \
 		gcc \
 		libc-dev \
