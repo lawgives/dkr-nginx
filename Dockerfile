@@ -129,4 +129,4 @@ COPY nginx/ /etc/nginx/
 
 EXPOSE 80 443
 
-CMD ["/sbin/dinit", "-r",  "nginx", "-g", "daemon off;"]
+CMD ["/sbin/dinit", "-r",  "/usr/bin/nginx"]
