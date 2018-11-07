@@ -1,6 +1,6 @@
 # Makefile for creating container file
 # Override these with environmental variables
-VERSION?=1.11
+VERSION?=1.11-r1
 
 ### Do not override below
 
